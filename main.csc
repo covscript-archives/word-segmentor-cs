@@ -1,5 +1,7 @@
 import String
 
+constant echo = system.out.println
+
 class Segmentor
     ##### private:
     function __loadDictionary()
@@ -8,7 +10,8 @@ class Segmentor
 
     ##### public:
     function doSegment(sentence)
-
+        var s = String.str(sentence)
+        system.out.println(s)
     end
 
     ##### public override:

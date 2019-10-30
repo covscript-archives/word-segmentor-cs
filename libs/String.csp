@@ -147,14 +147,6 @@ class String
         return __wrap(cs)
     end
 
-    function show()
-        var result = ""
-        foreach s in __chars
-            result += s
-        end
-        return result
-    end
-
     ###### public override:
     function equal(orig)
         if this == orig
@@ -164,6 +156,14 @@ class String
             return false
         end
         return this.__chars == orig.__chars;
+    end
+
+    function to_string()
+        var result = ""
+        foreach s in __chars
+            result += s
+        end
+        return result
     end
 end
 
