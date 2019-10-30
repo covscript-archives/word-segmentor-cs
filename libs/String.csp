@@ -102,7 +102,7 @@ class String
                 continue
             end
             if __isChar32(csStr, i)
-                __chars.push_back(__getChar8String(csStr, i))
+                __chars.push_back(__getChar32String(csStr, i))
                 i += 4
                 continue
             end
