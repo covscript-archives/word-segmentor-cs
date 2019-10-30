@@ -2,7 +2,7 @@
 
 import csbuild
 
-constant VERSION = "1.0"
+constant VERSION = "2.0"
 var CSBUILD_RUNNING_IN_MINGW_MSYS = false
 
 constant echo = system.out.println
@@ -39,7 +39,7 @@ constant TEMPLATE_CONFIG =
 "    config.version = \"<extension-version>\"\n" +
 "    config.version_code = 1\n" +
 "    @begin\n" +
-"    config.target(\"<target-name>\", {\"main.cpp\"})\n" + 
+"    config.target(\"<target-name>\", {\"main.cpp\"}).type(\"cpp\")\n" + 
 "    @end\n" +
 "end\n"
 @end
@@ -185,7 +185,7 @@ function csbuild_help()
         "    check       Check build files but don't build any extension\n" + 
         "    generate    Generate build files accroding to csbuild.config\n" + 
         "    make        Build extension\n" + 
-        "    run         Build and run extension in CovScript REPL\n" +
+        "    run         Build and run extension/CovScript\n" +
         "    push        Publish extension to public server\n" +
         "    help        Show this text\n" + 
         "    version     Display CSBuild version\n" +
@@ -437,6 +437,7 @@ function main(args)
             case "check"; return csbuild_command_gate(arg, args); end
             case "generate"; return csbuild_command_gate(arg, args); end
             case "make"; return csbuild_command_gate(arg, args); end
+            case "run"; return csbuild_command_gate(arg, args); end
             case "clean"; return csbuild_command_gate(arg, args); end
             case "push"; return csbuild_command_gate(arg, args); end
             case "version"; return csbuild_version(); end

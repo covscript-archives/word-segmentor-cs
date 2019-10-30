@@ -5,11 +5,17 @@ class target
     var source = new list
     var libs = new list
     var coptions = new string
+    var ctype = "cpp"
 
     function compile(files)
         foreach file in files
             source.push_back(file)
         end
+        return this
+    end
+
+    function type(t)
+        ctype = t
         return this
     end
 
