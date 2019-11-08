@@ -1,6 +1,8 @@
 #!/usr/bin/env cs
 package String
 
+import assert
+
 # This package requires branch string-enhance
 
 class String
@@ -22,7 +24,7 @@ class String
 
     ##### private:
     function __assert(cond)
-        if !cond; throw runtime.exception("assertion failed"); end
+        assert.assert_true(cond)
     end
 
     function __bitwiseAnd8(x, y)

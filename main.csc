@@ -1,11 +1,14 @@
 import String
+import FinalSegment
 
 constant echo = system.out.println
 
 class Segmentor
     ##### private:
-    function __loadDictionary()
+    var finalSegment = FinalSegment.getInstance()
 
+    ##### private:
+    function __loadDictionary()
     end
 
     ##### public:

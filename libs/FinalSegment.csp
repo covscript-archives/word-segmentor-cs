@@ -1,0 +1,67 @@
+package FinalSegment
+
+class FinalSegment
+    ##### private:
+    # Map<char, Map<char, double>>
+    var __emit = new hash_map
+
+    # Map<char, double>
+    var __start = new hash_map
+
+    # Map<char, Map<char, double>>
+    var __trans = new hash_map
+
+    # Map<char, array<char>>
+    var __prevStatus = new hash_map
+
+    # status
+    var __B = 'B'
+    var __M = 'M'
+    var __E = 'E'
+    var __S = 'S'
+
+    var __FAIL_SAFE = (-0.000000000000000000000000000000000314)
+
+    ##### private:
+    function __loadProbabilities()
+        var value = new hash_map
+        
+    end
+
+    function __loadModel()
+        __prevStatus[__B] = {__E, __S}
+        __prevStatus[__M] = {__M, __B}
+        __prevStatus[__S] = {__S, __E}
+        __prevStatus[__E] = {__B, __M}
+        __start[__B] = -0.26268660809250016
+        __start[__E] = __FAIL_SAFE
+        __start[__M] = __FAIL_SAFE
+        __start[__S] = -1.4652633398537678
+
+        var transB = new hash_map
+        transB[__E] = -0.510825623765990
+        transB[__M] = -0.916290731874155
+        var transE = new hash_map
+        transE[__B] = -0.5897149736854513
+        transE[__S] = -0.8085250474669937
+        var transM = new hash_map
+        transM[__E] = -0.33344856811948514
+        transM[__M] = -1.2603623820268226
+        var transS = new hash_map
+        transS[__B] = -0.7211965654669841
+        transS[__S] = -0.6658631448798212
+        __trans[__B] = transB
+        __trans[__E] = transE
+        __trans[__M] = transM
+        __trans[__S] = transS
+
+        __loadProbabilities()
+    end
+end
+
+var __INSTANCE = new FinalSegment
+__INSTANCE.__loadModel()
+
+function getInstance()
+    return __INSTANCE
+end
