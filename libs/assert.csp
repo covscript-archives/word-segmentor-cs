@@ -1,0 +1,59 @@
+#
+# Created by ice1000 on 2018-03-12
+# Built with CovScript 3.2.2(Build3)
+# Built with CovScript 1.2.2(Beta5)
+#
+
+package assert
+
+# a: expected, b: actual
+function assert_equals(a, b)
+    if a != b
+        throw runtime.exception("values are not equaled\n")
+    end
+end
+
+# a: expected, b: actual
+function assert_similar(a, b, c)
+    var sum = a - b
+    if sum * sum >= c * c
+        throw runtime.exception("values are not similar\n")
+    end
+end
+
+function assert_true(a)
+    if !a
+        throw runtime.exception("value is not true.\n")
+    end
+end
+
+function assert_false(a)
+    if a
+        throw runtime.exception("value is not false.\n")
+    end
+end
+
+function assert_null(a)
+    if a != null
+        throw runtime.exception("value is not null.\n")
+    end
+end
+
+function assert_not_null(a)
+    if a == null
+        throw runtime.exception("value is null.\n")
+    end
+end
+
+# assert a lambda/function to fail
+function assert_fails(expr)
+	var success = false
+	try
+		expr()
+	catch e
+	    success = true
+	end
+	if !success
+	    throw runtime.exception("function has successfully exited, which is unexpected\n")
+	end
+end
